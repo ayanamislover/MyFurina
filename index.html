@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello from Furina's worshippers</title>
+    <link rel="icon" type="png" sizes="16x16" href="favicon-32x32.png">
+    <link rel="stylesheet" href="styles2.css">
+    <style>
+        .text-center {
+            text-align: center;
+        }
+
+        .small-font {
+            font-size: smaller;
+        }
+
+        .illustration-credit {
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="scale-container" style="transform: scale(0.998532) translate(0.939794px, 0px);">
+    <div class="text-center">
+        <div class="small-font illustration-credit">
+            Hello from Furina's worshippers<br>
+        </div>
+        <div class="scrolling-wrapper" id="autoScrollDiv">
+            <img src="furina0.jpg" alt="Image 1" class="">
+            <img src="furina1.jpg" alt="Image 2" class="">
+            <img src="furina2.jpg" alt="Image 3" class="">
+            <img src="furina3.jpg" alt="Image 4" class="">
+            <img src="furina4.jpg" alt="Image 5" class="">
+            <img src="furina5.jpg" alt="Image 6" class="">
+            <img src="furina6.jpg" alt="Image 7" class="">
+            <img src="furina7.jpg" alt="Image 8" class="">
+            <img src="furina8.jpg" alt="Image 9" class="">
+            <img src="furina9.jpg" alt="Image 10" class="">
+            <img src="furina10.jpg" alt="Image 11" class="">
+            <img src="furina11.jpg" alt="Image 12" class="">
+            <img src="furina12.jpg" alt="Image 13" class="">
+            <img src="furina0.jpg" alt="Image 1" class="">
+            <img src="furina1.jpg" alt="Image 2" class="">
+            <img src="furina2.jpg" alt="Image 3" class="">
+            <img src="furina3.jpg" alt="Image 4" class="">
+            <img src="furina4.jpg" alt="Image 5" class="">
+            <img src="furina5.jpg" alt="Image 6" class="">
+            <img src="furina6.jpg" alt="Image 7" class="">
+            <img src="furina7.jpg" alt="Image 8" class="">
+            <img src="furina8.jpg" alt="Image 9" class="">
+            <img src="furina9.jpg" alt="Image 10" class="">
+            <img src="furina10.jpg" alt="Image 11" class="">
+            <img src="furina11.jpg" alt="Image 12" class="">
+            <img src="furina12.jpg" alt="Image 13" class="">
+        </div>
+    </div>
+    <div class="text-center">
+        <div class="small-font illustration-credit1">
+            <br>Character Illustration by
+            <a href="https://www.pixiv.net/artworks/112960966"target="_blank">雨壱絵穹</a>
+            <a href="https://www.pixiv.net/artworks/113275721"target="_blank">ALNYACK</a>
+            <a href="https://www.pixiv.net/artworks/112824278"target="_blank">torino</a>
+            <a href="https://www.pixiv.net/users/87164619"target="_blank">JJJSSS / ジェース</a>
+            <a href="https://www.pixiv.net/users/58434088"target="_blank">喵咕君QAQ(KH3)</a>
+            <a href="https://www.pixiv.net/users/82977485"target="_blank">YENI</a>
+            <a href="https://www.pixiv.net/users/4325078"target="_blank">Yアイスワイン@icwine</a>
+            <a href="https://www.pixiv.net/users/543444"target="_blank">jura</a>
+            <a href="https://www.pixiv.net/users/60094941"target="_blank">Rable_</a>
+            <a href="https://www.pixiv.net/users/9735518"target="_blank">純白A型</a>
+            <a href="https://www.pixiv.net/users/91987423"target="_blank">剣を持つ于桑</a>
+            <a href="https://www.pixiv.net/users/7216525"target="_blank">そらに</a>
+            <a href="https://www.pixiv.net/users/552160"target="_blank">紅シャケ</a>
+        </div>
+        <div class="small-font illustration-credit2">
+            神爱世人，芙门永存！<br>
+            God loves the world,Furina lives forever!<br>
+        </div>
+    </div>
+
+    <script>
+
+
+        let resizeTimeout;
+
+        function debouncedResize() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(setScale, 200);
+        }
+
+        window.addEventListener('resize', debouncedResize);
+
+        function setScale() {
+            const container = document.querySelector('.scale-container');
+            const scaleX = window.innerWidth / container.scrollWidth;
+            const scaleY = window.innerHeight / container.scrollHeight;
+            const scale = Math.min(scaleX, scaleY);
+
+            // 计算偏移量以使内容居中
+            const offsetX = (window.innerWidth - container.scrollWidth * scale) / 2;
+            const offsetY = (window.innerHeight - container.scrollHeight * scale) / 2;
+
+            container.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+        }
+
+
+        window.addEventListener('resize', setScale);
+        window.addEventListener('load', setScale);
+
+        document.oncontextmenu = function () {
+            return false;
+        }
+
+        const div = document.getElementById('autoScrollDiv');
+        let leftPos = div.scrollLeft;
+        let isScrolling = true;
+
+        div.addEventListener('mouseover', function (e) {
+            const rect = e.target.getBoundingClientRect();
+            if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                isScrolling = false;  // 停止滚动
+            }
+        });
+
+        div.addEventListener('mouseout', function () {
+            isScrolling = true;  // 恢复滚动
+        });
+
+        const images = document.querySelectorAll('.scrolling-wrapper img');
+
+        images.forEach(image => {
+            image.addEventListener('mouseover', function () {
+                image.classList.add('enlarge');
+            });
+
+            image.addEventListener('mouseout', function () {
+                image.classList.remove('enlarge');
+            });
+        });
+
+
+
+        const n = 13;  // 图片数量
+        let totalWidthOfNImages = 5*n-4;  // 5*n涨图片
+        window.addEventListener('load', function () {
+            // 当页面加载时，计算前n张图片的宽度之和
+            const images = document.querySelectorAll('.scrolling-wrapper img');
+
+            for (let i = 0; i < n; i++) {
+                totalWidthOfNImages += images[i].offsetWidth + 10;
+            }
+
+            setScale();
+        });
+
+        function autoScroll() {
+            if (isScrolling) {
+                leftPos += 0.7;
+                div.scrollLeft = leftPos;
+
+                if (leftPos >= totalWidthOfNImages) {
+                    leftPos = 0;
+                    div.scrollLeft = leftPos;
+                }
+            }
+
+            requestAnimationFrame(autoScroll);
+        }
+
+        autoScroll();
+        window.onload = function() {
+            var bgm = document.getElementById('bgm');
+            bgm.volume = 0.3; // 设置音量为30%
+        }
+    </script>
+
+</div>
+</body>
+</html>
