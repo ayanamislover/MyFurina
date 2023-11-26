@@ -86,6 +86,6 @@ transform: translate3d(0,0,0);
 
 
 .enlarge {
-    transform: scale(1.1); /* 调整这里的数字来改变放大的程度 */
+    transform: scale(1.15); /* 调整这里的数字来改变放大的程度 */
     transition: transform 0.4s; /* 这会使图片平滑地放大和缩小 */
 }
